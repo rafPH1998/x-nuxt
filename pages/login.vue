@@ -4,6 +4,8 @@ definePageMeta({
   layout: 'guest'
 })
 
+const router = useRouter()
+
 const form = ref({
   email: "test@example.com",
   password: "password",
@@ -18,6 +20,7 @@ const auth = async () => {
   loading.value = true
   try {
     await authStore.login(form.value)
+    navigateTo('/')
   } catch (e) {
     console.log(e)
   } finally {

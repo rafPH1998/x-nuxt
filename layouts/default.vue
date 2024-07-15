@@ -1,19 +1,54 @@
+
+<script setup lang="ts">
+
+const rail = ref<boolean>(true)
+const drawer = ref<boolean>(true)
+
+</script>
+
 <template>
   <v-app theme="dark">
-    <template>
-      <v-layout class="rounded rounded-md">
-        <v-app-bar title="Application bar"></v-app-bar>
+    <v-layout class="rounded rounded-md">
+      <v-app-bar title="Application bar"></v-app-bar>
 
-        <v-navigation-drawer>
-          <v-list>
-            <v-list-item title="Navigation drawer"></v-list-item>
-          </v-list>
-        </v-navigation-drawer>
+      <v-navigation-drawer
+        v-model="drawer"
+        :rail="rail"
+        permanent
+        @click="rail = false"
+      >
+        <v-list-item
+          prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
+          title="John Leider"
+          nav
+        >
+          <template v-slot:append>
+            <v-btn
+              icon="mdi-chevron-left"
+              variant="text"
+              @click.stop="rail = !rail"
+            ></v-btn>
+          </template>
+        </v-list-item>
 
-        <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
-          Main Content
-        </v-main>
-      </v-layout>
-    </template>
+        <v-divider></v-divider>
+
+        <v-list density="compact" nav>
+          <v-list-item prepend-icon="mdi-twitter" title="Tweets" value="tweets" to="/"></v-list-item>
+          <v-list-item prepend-icon="mdi-account-group-outline" title="Users" value="users" to="users"></v-list-item>
+        </v-list>
+        <template v-slot:append>
+          <div class="pa-2">
+            <v-btn block item prepend-icon="mdi-logout">
+              Sair
+            </v-btn>
+          </div>
+        </template>
+      </v-navigation-drawer>
+
+      <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
+        <slot/>
+      </v-main>
+    </v-layout>
   </v-app>
 </template>
