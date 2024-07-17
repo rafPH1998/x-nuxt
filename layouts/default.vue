@@ -7,7 +7,7 @@ const drawer = ref<boolean>(true)
 </script>
 
 <template>
-  <v-app theme="dark">
+  <v-app theme="">
     <v-layout class="rounded rounded-md">
       <v-app-bar title="Application bar"></v-app-bar>
 
@@ -34,12 +34,12 @@ const drawer = ref<boolean>(true)
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-          <v-list-item prepend-icon="mdi-twitter" title="Tweets" value="tweets" to="/"></v-list-item>
-          <v-list-item prepend-icon="mdi-account-group-outline" title="Users" value="users" to="users"></v-list-item>
+          <v-list-item prepend-icon="mdi-twitter" title="Tweets" value="tweets" to="/" color="info"></v-list-item>
+          <v-list-item prepend-icon="mdi-account-group-outline" title="Users" value="users" to="users" color="info"></v-list-item>
         </v-list>
         <template v-slot:append>
           <div class="pa-2">
-            <v-btn block item prepend-icon="mdi-logout">
+            <v-btn block item prepend-icon="mdi-logout" color="info"  variant="outlined">
               Sair
             </v-btn>
           </div>

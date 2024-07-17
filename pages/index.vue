@@ -28,7 +28,7 @@ const commentPost = ref<boolean>(false)
             <v-avatar color="secondary"></v-avatar>
             <div class="d-flex flex-column">
                 <small>Rafael Belchior</small>
-                <small style="color: #90A4AE;">5 h</small>
+                <small style="color: #455A64;">5 h</small>
             </div>
        </div>
 
@@ -46,17 +46,18 @@ const commentPost = ref<boolean>(false)
         
         <v-card-actions>
             <v-btn
-                color=""
+                color="blue-lighten-2"
                 icon="mdi-thumb-up"
                 variant="text"
             ></v-btn>
-            <small>(12)</small>
+            
+            <small style="color: #455A64;">(12)</small>
 
             <!-- start modal comentario do post -->
             <v-dialog v-model="commentPost" max-width="600">
                 <template v-slot:activator="{ props: activatorProps }">
                     <v-btn
-                        color=""
+                        color="blue-lighten-2"
                         icon="mdi mdi-comment"
                         variant="text"
                         v-bind="activatorProps"
@@ -96,7 +97,7 @@ const commentPost = ref<boolean>(false)
                 </v-card>
             </v-dialog>
             <!-- final modal comentario do post -->
-            <small>(12)</small>
+            <small style="color: #455A64;">(12)</small>
         </v-card-actions>
     </v-card>
   </v-container>
