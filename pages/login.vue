@@ -7,7 +7,7 @@ definePageMeta({
 const router = useRouter()
 
 const form = ref({
-  email: "test@example.com",
+  email: "lstrosin@example.com",
   password: "password",
   device_name: "rafael"
 })

@@ -4,7 +4,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const token = ref<string|null>(null)
   const user = ref<User|null>(null)
-  const isLoggedIn = computed(() => !user.value)
+  const isLoggedIn = ref<boolean>(false)
 
   async function getUser(){
     const res = await useApi("/api/me", { 
@@ -24,10 +24,23 @@ export const useAuthStore = defineStore('auth', () => {
     });
 
     token.value = res?.data?.value?.token
+    isLoggedIn.value = true;
 
     await getUser()
     return res
   }
 
-  return { login, getUser, isLoggedIn, user}
+  async function logoutUser(){
+
+    await useApi("/api/logout", { 
+        method: "POST", 
+        headers: { Authorization: `Bearer ${token.value}` } 
+    });
+
+    isLoggedIn.value = false;
+    token.value = ""
+  }
+  
+
+  return { login, getUser, logoutUser, isLoggedIn, user, token}
 })

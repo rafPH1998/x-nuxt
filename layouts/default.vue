@@ -4,10 +4,21 @@
 const rail = ref<boolean>(true)
 const drawer = ref<boolean>(true)
 
+const authStore = useAuthStore()
+
+const logout = async () => {
+  try {
+    await authStore.logoutUser()
+    navigateTo('/login')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 </script>
 
 <template>
-  <v-app theme="">
+  <v-app theme="dark">
     <v-layout class="rounded rounded-md">
       <v-app-bar title="Application bar"></v-app-bar>
 
@@ -39,7 +50,7 @@ const drawer = ref<boolean>(true)
         </v-list>
         <template v-slot:append>
           <div class="pa-2">
-            <v-btn block item prepend-icon="mdi-logout" color="info"  variant="outlined">
+            <v-btn @click.prevent="logout()" block item prepend-icon="mdi-logout" color="info"  variant="outlined">
               Sair
             </v-btn>
           </div>
